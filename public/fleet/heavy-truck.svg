@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="none">
+  <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1e40af"/><stop offset="1" stop-color="#4f46e5"/></linearGradient></defs>
+  <rect width="800" height="400" fill="#0b1024"/>
+  <rect x="110" y="150" width="480" height="140" rx="12" fill="url(#g3)"/><rect x="600" y="180" width="120" height="110" rx="12" fill="#1d4ed8"/>
+  <circle cx="200" cy="310" r="30" fill="#111827"/><circle cx="360" cy="310" r="30" fill="#111827"/><circle cx="520" cy="310" r="30" fill="#111827"/><circle cx="650" cy="310" r="30" fill="#111827"/>
+  <text x="120" y="90" fill="#93c5fd" font-size="44" font-family="Arial">Future Leader • Heavy Trucks</text>
+</svg>
