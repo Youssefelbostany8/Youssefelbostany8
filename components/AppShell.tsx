@@ -1,6 +1,7 @@
 "use client";
 
-import { FormEvent, ReactNode, useState } from "react";
+import { useState } from "react";
+import type { FormEvent, ReactNode } from "react";
 import { Sidebar } from "@/components/Sidebar";
 
 type ShipmentDraft = {
@@ -18,6 +19,14 @@ const initialDraft: ShipmentDraft = {
   type: "",
   destination: "",
 };
+
+const shipmentFields: Array<{ key: keyof ShipmentDraft; label: string; fullRow?: boolean }> = [
+  { key: "sender", label: "Sender" },
+  { key: "receiver", label: "Receiver" },
+  { key: "weight", label: "Weight (kg)" },
+  { key: "type", label: "Type" },
+  { key: "destination", label: "Destination", fullRow: true },
+];
 
 export function AppShell({
   section,
@@ -109,20 +118,14 @@ export function AppShell({
             </div>
 
             <form className="mt-5 grid gap-3 sm:grid-cols-2" onSubmit={handleSubmit}>
-              {[
-                { key: "sender", label: "Sender" },
-                { key: "receiver", label: "Receiver" },
-                { key: "weight", label: "Weight (kg)" },
-                { key: "type", label: "Type" },
-                { key: "destination", label: "Destination" },
-              ].map((field) => (
-                <label key={field.key} className={field.key === "destination" ? "sm:col-span-2" : ""}>
+              {shipmentFields.map((field) => (
+                <label key={field.key} className={field.fullRow ? "sm:col-span-2" : ""}>
                   <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-300">
                     {field.label}
                   </span>
                   <input
                     required
-                    value={shipmentDraft[field.key as keyof ShipmentDraft]}
+                    value={shipmentDraft[field.key]}
                     onChange={(event) =>
                       setShipmentDraft((prev) => ({ ...prev, [field.key]: event.target.value }))
                     }
@@ -132,7 +135,7 @@ export function AppShell({
                 </label>
               ))}
 
-              <div className="sm:col-span-2 flex justify-end gap-2 pt-2">
+              <div className="flex justify-end gap-2 pt-2 sm:col-span-2">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
